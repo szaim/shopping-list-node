@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping List</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- CSS -->
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        <form id="main">
+            <h1>Shopping List</h1>
+            <label for="item-input">Item</label>
+            <input required type="text" placeholder="Item to Add" id="item-input" name="item-input"
+                autocomplete="off" autofocus>
+            <button type="submit">Add Item</button>
+            <ul id="item-list">
+            </ul>
+            <p class="light">Double-click to edit items</p>
+        </form>
+
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
+
+        <!-- Handlebars templates -->
+        <script id="item-list-template" type="text/x-handlebars-template">
+            <ul id="item-list">
+                {{#each items}}
+                <li data-id="{{ id }}{{ _id }}">
+                    <div class="display">
+                        <span class="name">{{name}}</span>
+                        <div class="delete">
+                            <a href="#" class="delete-item" title="Remove {{name}} from your list">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <input type="text" style="display: none">
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+    <script type="text/javascript" src="./script.js"></script>
+    </body>
+</html>
